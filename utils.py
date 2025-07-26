@@ -1,6 +1,8 @@
 # utils.py
 import re
 
+from textblob import TextBlob
+
 def is_exit_keyword(user_input: str) -> bool:
     """
     Checks if the user input contains any exit keywords to end the conversation.
@@ -16,7 +18,6 @@ def is_exit_keyword(user_input: str) -> bool:
 
     exit_keywords = ["exit", "quit", "bye", "end", "stop"]
     return user_input.strip().lower() in exit_keywords
-
 
 def validate_input(field_key: str, response: str) -> tuple[bool, str]:
     """
@@ -35,7 +36,7 @@ def validate_input(field_key: str, response: str) -> tuple[bool, str]:
     if field_key == "name":
         if any(char.isdigit() for char in response):
             return False, "❗Name should not contain numbers."
-    
+
     elif field_key == "email":
         if not re.match(r"[^@]+@[^@]+\.[^@]+", response):
             return False, "❗Invalid email format."
@@ -53,3 +54,26 @@ def validate_input(field_key: str, response: str) -> tuple[bool, str]:
             return False, "❗Please enter at least one technology."
 
     return True, ""
+
+def get_sentiment(text: str) -> str:
+    """
+    Analyzes the sentiment of a given text using TextBlob.
+
+    Args:
+        text (str): The input text.
+
+    Returns:
+        str: The sentiment label: 'Positive', 'Neutral', or 'Negative'.
+    """
+    if not text.strip():
+        return "Neutral"
+
+    blob = TextBlob(text)
+    polarity = blob.sentiment.polarity
+
+    if polarity > 0.2:
+        return "Positive"
+    elif polarity < -0.2:
+        return "Negative"
+    else:
+        return "Neutral"
