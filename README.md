@@ -33,7 +33,7 @@ An interactive AI-powered chatbot built using **Streamlit** and **Gemini API** t
 
 ## 📁 Folder Structure
 
-.
+
 ├── app.py  
 ├── chatbot.py  
 ├── utils.py  
