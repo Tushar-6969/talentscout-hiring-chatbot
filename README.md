@@ -19,6 +19,33 @@ An interactive AI-powered chatbot built using **Streamlit** and **Gemini API** t
 ## 🛠️ Setup
 
 1. Clone the repository:
-   ```bash
    git clone https://github.com/your-username/talentscout-chatbot.git
    cd talentscout-chatbot
+
+2. Install dependencies:
+   pip install -r requirements.txt
+
+3. Create a `.env` file:
+   GEMINI_API_KEY=your_google_gemini_api_key
+
+4. Run the app:
+   streamlit run app.py
+
+## 📁 Folder Structure
+
+.
+├── app.py  
+├── chatbot.py  
+├── utils.py  
+├── requirements.txt  
+├── .env  
+├── .gitignore  
+└── README.md
+
+## 🧠 About the Project
+
+This project is part of the **PGAGI AI/ML Internship Assignment**, designed to demonstrate prompt engineering, AI tool integration, and interactive app design.
+
+---
+
+Made with 💻 by Tushar Rathor
